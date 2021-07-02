@@ -57,11 +57,13 @@ public class Game {
                 attackOneRound();
             }
         }
+
         else {
             switch (s){
                 case "N" : {
                     if (board.isMovePossible(Direction.NORTH, player.getPosition())){
                         player.setPosition(new Position(player.getPosition().getX(), (short) (player.getPosition().getY()-1)));
+                        System.out.println(player.getPosition().getX()+ ", "+player.getPosition().getY());
                         if(checkMonster()) {
                             attackOneRound();
                         }
@@ -70,7 +72,8 @@ public class Game {
                     break;
                 case "S" : {
                     if (board.isMovePossible(Direction.SOUTH, player.getPosition())) {
-                        player.setPosition(new Position(player.getPosition().getX(), (short) (player.getPosition().getY() + -1)));
+                        player.setPosition(new Position(player.getPosition().getX(), (short) (player.getPosition().getY() +1)));
+                        System.out.println(player.getPosition().getX()+ ", "+player.getPosition().getY());
                         if (checkMonster()) {
                             attackOneRound();
                         }
@@ -80,6 +83,7 @@ public class Game {
                 case "E" :{
                     if (board.isMovePossible(Direction.EAST, player.getPosition())) {
                         player.setPosition(new Position((short) (player.getPosition().getX() + 1), (player.getPosition().getY())));
+                        System.out.println(player.getPosition().getX()+ ", "+player.getPosition().getY());
                         if (checkMonster()) {
                             attackOneRound();
                         }
@@ -88,7 +92,8 @@ public class Game {
                     break;
                 case "W" : {
                     if (board.isMovePossible(Direction.WEST, player.getPosition())) {
-                        player.setPosition(new Position((short) (player.getPosition().getX() - 1), (short) (player.getPosition().getY() - 1)));
+                        player.setPosition(new Position((short) (player.getPosition().getX() - 1), (short) (player.getPosition().getY())));
+                        System.out.println(player.getPosition().getX()+ ", "+player.getPosition().getY());
                         if (checkMonster()) {
                             attackOneRound();
                         }
@@ -97,6 +102,7 @@ public class Game {
                     break;
            }
         }
+        System.out.println(player.getPosition().getX()+ ", "+player.getPosition().getY());
     }
 
     public void attackOneRound() {

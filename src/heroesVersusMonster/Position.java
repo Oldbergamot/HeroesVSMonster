@@ -37,12 +37,18 @@ public class Position {
         switch (direction) {
             case NORTH :
                 if (this.getY()-1 >= 0) return new Position(this.getX(), (short) (this.getY()-1));
+                break;
             case SOUTH:
                 if (this.getY()+1 <= 14) return new Position(this.getX(), (short) (this.getY()+1));
+                break;
             case EAST:
                 if (this.getX()+1 <= 14) return new Position((short) (this.getX()+1), this.getY());
+                break;
             case WEST:
                 if (this.getX()-1 >=0) return new Position((short) (this.getX()-1), this.getY());
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + direction);
         }
         return null;
     }

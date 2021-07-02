@@ -109,9 +109,28 @@ public class Board {
     }
 
     public boolean isMovePossible(Direction direction, Position playerPos) {
-        boolean result = board[playerPos.getNextSquare(direction).getX()][playerPos.getNextSquare(direction).getY()].getSquareType().equals(SquareType.PLAIN);
-        System.out.println("null : " +(playerPos.getNextSquare(direction)==null));
-        System.out.println("next : "+playerPos.getNextSquare(direction).getX()+" , "+playerPos.getNextSquare(direction).getY());
-        return playerPos.getNextSquare(direction) != null && result;
+        //ici est le blem en 144
+        Position nextPos ;
+        switch (direction) {
+            case NORTH :
+                if (playerPos.getY()-1 >= 0) return board[playerPos.getX()][playerPos.getY()-1].getSquareType().equals(SquareType.PLAIN);
+                break;
+            case SOUTH:
+                if (playerPos.getY()+1 <= 14) return board[playerPos.getX()][playerPos.getY()+1].getSquareType().equals(SquareType.PLAIN);
+                break;
+            case EAST:
+                if (playerPos.getX()+1 <= 14) return board[playerPos.getX()+1][playerPos.getY()].getSquareType().equals(SquareType.PLAIN);
+                break;
+            case WEST:
+                if (playerPos.getX()-1 >=0) return board[playerPos.getX()-1][playerPos.getY()].getSquareType().equals(SquareType.PLAIN);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + direction);
+        }
+//        boolean result = board[playerPos.getNextSquare(direction).getX()][playerPos.getNextSquare(direction).getY()].getSquareType().equals(SquareType.PLAIN);
+//        System.out.println("null : " +(playerPos.getNextSquare(direction)==null));
+//        System.out.println("next : "+playerPos.getNextSquare(direction).getX()+" , "+playerPos.getNextSquare(direction).getY());
+//        return playerPos.getNextSquare(direction) != null && result;
+        return false;
     }
 }
