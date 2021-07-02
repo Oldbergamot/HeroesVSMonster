@@ -1,5 +1,8 @@
 package heroesVersusMonster;
 
+import jdk.swing.interop.SwingInterOpUtils;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -46,6 +49,7 @@ public class Game {
         Scanner sc = new Scanner(System.in);
 
         //logique de vérification
+        System.out.println();
         System.out.println("Voulez vous avancer (N,S,E,W), attaquer ou abandonner?");
         String s = sc.nextLine();
         if(s.equals("abandonner")) {
@@ -57,7 +61,6 @@ public class Game {
                 attackOneRound();
             }
         }
-
         else {
             switch (s){
                 case "N" : {
@@ -102,16 +105,18 @@ public class Game {
                     break;
            }
         }
-        System.out.println(player.getPosition().getX()+ ", "+player.getPosition().getY());
     }
 
     public void attackOneRound() {
-        Monster monster = (Monster) board.getMonsters()
-                .stream()
-                .filter(m -> m.getPosition()
-                        .equals(player.getPosition()));
-        player.attack(monster);
-        monster.attack(player);
+        Monster monster = null;
+        List<Monster> monsters = board.getMonsters();
+        for(Monster m : monsters){
+            if(m.getPosition().equals(player.getPosition())) {
+                monster = m;
+                player.attack(m);
+                if(m.isAlive) m.attack(player);
+            }
+        }
         if(!monster.isAlive) board.removeMonster(monster);
     }
 

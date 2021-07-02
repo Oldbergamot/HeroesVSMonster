@@ -7,6 +7,7 @@ public class Whelp extends Monster{
         super(position);
         this.sta += 1;
         this.type = "dragonnet";
+        generateLoot();
     }
 
     private void generateLoot() {

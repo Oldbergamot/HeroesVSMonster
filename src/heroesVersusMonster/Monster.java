@@ -19,12 +19,13 @@ public class Monster extends Character{
                 +" et lui fait "
                 +dmg
                 +" point de domage");
+        System.out.println(other.getName()+" n'a plus que "+other.getPV()+ " PV sur "+other.getTotalPV());
 
         if (other.getPV() <= 0) {
             other.setAlive(false);
             this.getLoot(other);
-            System.out.println(other.getName()+" succombe à ses blessures"+
-                    this.type+ " obient : "+other.getInventory().getGold()+ "or et "+other.getInventory().getLeather()+" cuirs");
+            System.out.println(other.getName()+" succombe à ses blessures "+
+                    this.type+ " obient : "+other.getInventory().getGold()+ " or et "+other.getInventory().getLeather()+" cuirs");
         }
 
     }

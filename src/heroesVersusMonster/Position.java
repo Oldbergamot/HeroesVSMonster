@@ -32,26 +32,26 @@ public class Position {
         Random r = new Random();
         return new Position((short) r.nextInt(limit), (short) r.nextInt(limit));
     }
-
-    public Position getNextSquare(Direction direction) {
-        switch (direction) {
-            case NORTH :
-                if (this.getY()-1 >= 0) return new Position(this.getX(), (short) (this.getY()-1));
-                break;
-            case SOUTH:
-                if (this.getY()+1 <= 14) return new Position(this.getX(), (short) (this.getY()+1));
-                break;
-            case EAST:
-                if (this.getX()+1 <= 14) return new Position((short) (this.getX()+1), this.getY());
-                break;
-            case WEST:
-                if (this.getX()-1 >=0) return new Position((short) (this.getX()-1), this.getY());
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + direction);
-        }
-        return null;
-    }
+//
+//    public Position getNextSquare(Direction direction) {
+//        switch (direction) {
+//            case NORTH :
+//                if (this.y-1 >= 0) return new Position(this.x, (short) (this.y-1));
+//                break;
+//            case SOUTH:
+//                if (this.y+1 <= 14) return new Position(this.x, (short) (this.y+1));
+//                break;
+//            case EAST:
+//                if (this.x+1 <= 14) return new Position((short) (this.x+1), this.y);
+//                break;
+//            case WEST:
+//                if (this.x-1 >=0) return new Position((short) (this.x-1), this.y);
+//                break;
+//            default:
+//                throw new IllegalStateException("Unexpected value: " + direction);
+//        }
+//        return null;
+//    }
 
     @Override
     public boolean equals(Object o) {

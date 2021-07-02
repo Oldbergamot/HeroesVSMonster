@@ -6,6 +6,7 @@ public class Orc extends Monster{
     Orc(Position position){
         super(position);
         this.type = "Orc";
+        generateLoot();
     }
 
     private void generateLoot() {

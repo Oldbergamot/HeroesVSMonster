@@ -23,12 +23,13 @@ public class Heroes extends Character{
                 +" et lui fait "
                 +dmg
                 +" point de domage");
+        System.out.println(other.getType()+" n'a plus que "+other.getPV()+ " PV sur "+other.getTotalPV());
 
         if (other.getPV() <= 0) {
             other.setAlive(false);
             this.getLoot(other);
-            System.out.println(other.getType()+" succombe à ses blessures"+
-                    this.name+ " obient : "+other.getInventory().getGold()+ "or et "+other.getInventory().getLeather()+" cuirs");
+            System.out.println(other.getType()+" succombe à ses blessures "+
+                    this.name+ " obient : "+other.getInventory().getGold()+ " or et "+other.getInventory().getLeather()+" cuirs");
 
         }
     }
